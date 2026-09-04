@@ -14,7 +14,7 @@ response.choice[0].message.content
 
 #we can use openai python client library to connect to gemini as well
 GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai"
-google_api_key = os.getenv("GOOGLE_API_KEY")
+google_api_key = os.getenv("GEMINI_API_KEY")
 gemini = OpenAI(base_url=GEMINI_BASE_URL, api_key=google_api_key)
 response = gemini.chat.completions.create(model="gemini-2.5-pro",
                                           messages=[{"role":"user",

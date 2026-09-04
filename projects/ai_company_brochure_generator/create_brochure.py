@@ -13,7 +13,8 @@ from utils.scraper import (
 load_dotenv(override=True)
 
 
-api_key = os.getenv("OPENAI_API_KEY")
+api_key = os.getenv("GEMINI_API_KEY")
+gemini_url = "https://generativelanguage.googleapis.com/v1beta/openai/"
 
 if not api_key:
     raise ValueError(
@@ -21,9 +22,9 @@ if not api_key:
     )
 
 
-LINK_MODEL = "gpt-5-nano"
+LINK_MODEL = "gemini-3-flash-preview" #"gpt-5-nano"
 
-BROCHURE_MODEL = "gpt-4.1-mini"
+BROCHURE_MODEL = "gemini-3-flash-preview" #"gpt-4.1-mini"
 
 
 LINK_SYSTEM_PROMPT = """
@@ -87,7 +88,8 @@ Do not wrap the response inside a Markdown code block.
 """
 
 
-client = OpenAI()
+client = OpenAI(base_url=gemini_url,
+                api_key=api_key)
 
 
 def get_links_user_prompt(url):
